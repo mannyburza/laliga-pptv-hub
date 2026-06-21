@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>西甲直播 · 知识介绍页 | La Liga 信息站</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f9f7f3;
+            font-family: Georgia, 'Times New Roman', 'Noto Serif SC', serif;
+            color: #2b2b2b;
+            line-height: 1.75;
+            padding: 2rem 1.5rem;
+            max-width: 960px;
+            margin: 0 auto;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 全局韵律 */
+        h1, h2, h3 {
+            font-weight: 500;
+            letter-spacing: 0.01em;
+            color: #1a1a1a;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            text-align: left;
+            margin-bottom: 0.25rem;
+            border-left: 6px solid #c51f1f;
+            padding-left: 1rem;
+            line-height: 1.3;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            margin-top: 2.5rem;
+            margin-bottom: 0.75rem;
+            border-bottom: 1px dashed #d0cabc;
+            padding-bottom: 0.3rem;
+        }
+
+        h3 {
+            font-size: 1.15rem;
+            margin-top: 1.6rem;
+            margin-bottom: 0.5rem;
+            color: #3d3d3d;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            text-align: justify;
+            word-break: break-word;
+        }
+
+        a {
+            color: #9e2b2b;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1px;
+            transition: background 0.2s;
+        }
+
+        a:hover {
+            background: #f0e6d6;
+            color: #731f1f;
+        }
+
+        /* 目录感卡片区 —— 知识索引 */
+        .index-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.2rem;
+            margin: 2rem 0 1rem;
+        }
+
+        .index-card {
+            background: #ffffffec;
+            border-radius: 12px;
+            padding: 1.2rem 1.2rem 1rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02), 0 2px 4px rgba(0, 0, 0, 0.03);
+            border: 1px solid #eae3d9;
+            transition: box-shadow 0.15s;
+        }
+
+        .index-card:hover {
+            box-shadow: 0 6px 14px rgba(100, 70, 40, 0.06);
+        }
+
+        .index-card .label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #8a7b6a;
+            display: block;
+            margin-bottom: 0.3rem;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .index-card .title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+            color: #2b1e14;
+        }
+
+        .index-card .desc {
+            font-size: 0.92rem;
+            color: #4f4439;
+            line-height: 1.55;
+        }
+
+        /* 引用块 / 提示框 */
+        .info-box {
+            background: #f5efe7;
+            border-left: 4px solid #b5896f;
+            padding: 1.2rem 1.5rem;
+            margin: 1.8rem 0;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.98rem;
+            color: #3b3229;
+            font-style: normal;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.02);
+        }
+
+        .info-box strong {
+            color: #7a4d34;
+        }
+
+        .tip-box {
+            background: #f0efe9;
+            border-radius: 10px;
+            padding: 1rem 1.5rem;
+            margin: 1.8rem 0;
+            border: 1px solid #dad2c6;
+            border-left: 4px solid #7d6b58;
+        }
+
+        .tip-box .symbol {
+            font-size: 1.3rem;
+            margin-right: 0.5rem;
+        }
+
+        .faq-mini {
+            background: #fcfaf7;
+            border: 1px solid #e3dacf;
+            border-radius: 14px;
+            padding: 1rem 1.4rem 0.6rem;
+            margin: 2.2rem 0 1.5rem;
+        }
+
+        .faq-item {
+            padding: 0.6rem 0;
+            border-bottom: 1px dotted #ddd5c9;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-q {
+            font-weight: 600;
+            color: #362c21;
+            margin-bottom: 0.15rem;
+        }
+
+        .faq-a {
+            color: #53493e;
+            font-size: 0.95rem;
+            padding-left: 0.2rem;
+        }
+
+        /* 底部 */
+        footer {
+            margin-top: auto;
+            border-top: 1px solid #ded5c9;
+            padding-top: 1.5rem;
+            font-size: 0.9rem;
+            color: #655b4f;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 0.5rem;
+        }
+
+        footer a {
+            color: #6e4f3a;
+        }
+
+        /* 响应式 */
+        @media (max-width: 600px) {
+            body {
+                padding: 1.2rem 1rem;
+            }
+            h1 {
+                font-size: 1.6rem;
+                padding-left: 0.7rem;
+            }
+            h2 {
+                font-size: 1.2rem;
+            }
+            .index-grid {
+                grid-template-columns: 1fr;
+            }
+            .info-box, .tip-box {
+                padding: 0.9rem 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>西甲直播 · 信息与索引</h1>
+        <p style="color: #5b4e40; font-size: 1.05rem; margin-top: 0.3rem;">
+            关于 La Liga 赛事观看的知识整理与站点说明
+        </p>
+    </header>
+
+    <!-- 目录式卡片：快速索引 -->
+    <div class="index-grid">
+        <div class="index-card">
+            <span class="label">📺 赛事</span>
+            <div class="title">西甲联赛</div>
+            <div class="desc">西班牙顶级足球联赛，涵盖巴塞罗那、皇家马德里、马德里竞技等传统豪门。</div>
+        </div>
+        <div class="index-card">
+            <span class="label">📡 直播</span>
+            <div class="title">实时信号</div>
+            <div class="desc">匹配赛程提供多线路直播流，涵盖周末及周中比赛，支持移动与桌面端。</div>
+        </div>
+        <div class="index-card">
+            <span class="label">📋 指南</span>
+            <div class="title">观赛须知</div>
+            <div class="desc">了解比赛时间、转播延迟、语言解说等基础信息，提升观看体验。</div>
+        </div>
+        <div class="index-card">
+            <span class="label">🔐 可信</span>
+            <div class="title">站点原则</div>
+            <div class="desc">聚合公开信息，不存储盗版内容，所有链接均指向合法或已授权的转播源。</div>
+        </div>
+    </div>
+
+    <!-- 介绍与可信说明 -->
+    <section>
+        <h2>关于本站 · 定位与边界</h2>
+        <p>
+            <strong>laliga-pptv.com</strong> 是一个以信息汇集与导航为目标的非官方资料站。
+            网站核心功能是整理西甲联赛的赛程、积分、球队动态以及可公开获取的直播链接，
+            帮助球迷更便捷地找到自己关心的比赛画面。所有直播来源均指向持权转播商或官方合作平台，
+            本站不提供任何非法下载或盗链服务。
+        </p>
+        <p>
+            如果你正在寻找稳定、清晰的比赛画面，推荐优先使用正规转播商。
+            同时本站也提供辅助信息如比赛前瞻、历史交锋记录、球场数据等，
+            方便你在观赛前后补充背景知识。需要直接进入直播列表时，
+            可以前往首页的 <a href="https://laliga-pptv.com">西甲直播</a> 板块，
+            那里汇总了当前轮次的主要对阵及对应信号。
+        </p>
+    </section>
+
+    <!-- 特点与知识性说明 -->
+    <section>
+        <h2>知识库 · 赛事数据与观看逻辑</h2>
+        <p>
+            西甲联赛通常于每年八月至次年五月进行，共 38 轮。由于版权原因，
+            中国大陆地区的官方直播主要由爱奇艺体育、咪咕视频及部分地方台持有。
+            本站所整理的链接均基于这些公开渠道，球迷在点击链接后将跳转至相应服务商页面，
+            部分可能需要注册或订阅。
+        </p>
+        <p>
+            除直播外，本站同时整理每轮裁判安排、伤病报告及关键统计，
+            帮助深度球迷跟进场外信息。转播商偶尔会根据比赛重要性分配不同解说语言，
+            建议在赛前留意直播页面的标注。若遇到信号临时中断，
+            可尝试切换线路或等待官方恢复。
+        </p>
+
+        <!-- 提示框：关于可信度 -->
+        <div class="tip-box">
+            <span class="symbol">ℹ️</span> <strong>可信提醒：</strong>
+            本站所有外链均经过人工核验，指向正版转播或权威数据站。
+            如果发现链接失效或有异常跳转，请及时通过页面反馈渠道告知，
+            我们会在一个工作日内更新。切勿相信任何要求付费或输入个人隐私的弹窗信息。
+        </div>
+    </section>
+
+    <!-- 引用块 -->
+    <div class="info-box">
+        <strong>值得了解：</strong> 西甲官方在 2023–2024 赛季启用了全新的多视角直播技术，
+        部分比赛支持自由切换机位。这一功能目前仅在官方订阅服务中提供，
+        而本站的聚合页会标记哪些场次支持多视角，方便你提前选择入口。
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="faq-mini">
+        <h3 style="margin-top: 0; border: none; font-weight: 500;">常见疑问 · 摘要</h3>
+
+        <div class="faq-item">
+            <div class="faq-q">📌 是否需要安装额外软件？</div>
+            <div class="faq-a">不需要。所有直播均通过浏览器打开，部分高清源可能需要启用 Flash（极少），但绝大多数已切换为 HTML5 播放器。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">📌 比赛回放可以在哪里看到？</div>
+            <div class="faq-a">多数转播商提供 48 小时回看。你也可以在西甲官网或 YouTube 频道查找官方集锦。本站暂时不收录回放链接。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">📌 页面打不开或加载缓慢怎么办？</div>
+            <div class="faq-a">先检查本地网络，部分公共 Wi-Fi 可能限制流媒体。其次可尝试切换浏览器或使用无痕模式。本站自身为轻量静态页，极少出现服务端故障。</div>
+        </div>
+    </div>
+
+    <!-- 额外信息区：相关资源 -->
+    <section>
+        <h2>相关信息 · 延伸阅读</h2>
+        <p>
+            除了即时直播，西甲球迷还可以关注以下资源：官方统计数据（LaLiga Stats）、
+            Transfermarkt 球员身价变动、以及各俱乐部官方社媒。
+            本站后续计划增加“本轮看点”专题，整合关键对决与数据前瞻。
+            如果你希望获取更纯粹的 <a href="https://laliga-pptv.com">西甲直播</a> 列表，
+            可以直接收藏主页面，赛前 30 分钟更新链接。
+        </p>
+        <p style="margin-top: 0.2rem;">
+            ⚽ 友情提示：比赛时间多为北京时间周六至周一凌晨，合理安排作息更健康。
+        </p>
+    </section>
+
+    <footer>
+        <span>laliga-pptv.com · 知识库版本 2025.03</span>
+        <span>
+            <a href="https://laliga-pptv.com">西甲直播</a> · 信息聚合
+        </span>
+    </footer>
+
+</body>
+</html>
