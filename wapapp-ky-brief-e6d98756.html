@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>开云 · 站点介绍与知识索引</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: #f5f1ea;
+            color: #2e2a24;
+            line-height: 1.65;
+            padding: 2rem 1.2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            max-width: 880px;
+            width: 100%;
+            background: #fcf9f5;
+            border-radius: 28px;
+            padding: 2.8rem 2.4rem;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.04);
+        }
+
+        /* 文章排版基调 */
+        h1, h2, h3 {
+            font-weight: 500;
+            letter-spacing: -0.01em;
+        }
+        h1 {
+            font-size: 2.4rem;
+            margin-bottom: 0.3rem;
+            color: #1f1b16;
+            border-left: 6px solid #b7a28b;
+            padding-left: 1rem;
+        }
+        .subhead {
+            font-size: 1rem;
+            color: #7a6f62;
+            margin-bottom: 2.2rem;
+            padding-left: calc(1rem + 6px);
+        }
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.35rem;
+            border-bottom: 1px solid #e1d8ce;
+        }
+        h3 {
+            font-size: 1.15rem;
+            margin: 1.6rem 0 0.6rem;
+            color: #3c352d;
+        }
+        p {
+            margin-bottom: 1.2rem;
+            color: #3b342d;
+        }
+        a {
+            color: #7b5f44;
+            text-decoration: none;
+            border-bottom: 1px solid #d4c4b4;
+            transition: border-color 0.2s, color 0.2s;
+        }
+        a:hover {
+            color: #4d3b2b;
+            border-bottom-color: #7b5f44;
+        }
+
+        /* 引用块 / 提示框 / 信息卡 */
+        .info-box {
+            background: #f2ede6;
+            padding: 1.5rem 1.8rem;
+            border-radius: 18px;
+            margin: 2rem 0 1.2rem;
+            border-left: 5px solid #b7a28b;
+            font-size: 0.96rem;
+        }
+        .info-box p:last-child {
+            margin-bottom: 0;
+        }
+        .info-box strong {
+            color: #4f3e2e;
+        }
+
+        .tip-box {
+            background: #eeeadb;
+            border-radius: 18px;
+            padding: 1.2rem 1.8rem;
+            margin: 1.8rem 0;
+            border: 1px solid #ddd4c6;
+            font-size: 0.93rem;
+            display: flex;
+            gap: 0.8rem 0.2rem;
+            flex-wrap: wrap;
+        }
+        .tip-box .label {
+            font-weight: 600;
+            color: #6b5a48;
+            margin-right: 0.2rem;
+            white-space: nowrap;
+        }
+
+        .faq-card {
+            background: #f9f5ef;
+            border-radius: 18px;
+            padding: 1.4rem 1.8rem;
+            margin: 1.5rem 0;
+            border: 1px solid #e6dcd0;
+        }
+        .faq-card h3 {
+            margin-top: 0;
+        }
+        .faq-card p {
+            margin-bottom: 0.6rem;
+        }
+
+        /* 目录感网格 / 信息区 */
+        .index-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.2rem;
+            margin: 1.8rem 0 1rem;
+        }
+        .index-item {
+            background: #f1ebe3;
+            padding: 1rem 1.2rem;
+            border-radius: 18px;
+            border: 1px solid #e2d7cb;
+            transition: background 0.2s;
+        }
+        .index-item:hover {
+            background: #eae2d6;
+        }
+        .index-item .icon {
+            font-size: 1.3rem;
+            margin-right: 0.4rem;
+        }
+        .index-item .title {
+            font-weight: 500;
+            color: #3f352a;
+        }
+        .index-item .desc {
+            margin-top: 0.3rem;
+            font-size: 0.88rem;
+            color: #63594c;
+        }
+
+        .related-list {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+        .related-list li {
+            padding: 0.4rem 0;
+            border-bottom: 1px dotted #ddd4c8;
+            display: flex;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+        }
+        .related-list li::before {
+            content: "•";
+            color: #b7a28b;
+            font-weight: bold;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e2d8cc;
+            margin: 2rem 0;
+        }
+
+        /* 响应式细节 */
+        @media (max-width: 600px) {
+            body {
+                padding: 0.8rem;
+            }
+            .container {
+                padding: 1.6rem 1.2rem;
+                border-radius: 20px;
+            }
+            h1 {
+                font-size: 1.8rem;
+                padding-left: 0.8rem;
+            }
+            .info-box {
+                padding: 1.2rem;
+            }
+            .tip-box {
+                flex-direction: column;
+                padding: 1.2rem;
+            }
+        }
+        @media (max-width: 420px) {
+            .index-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- hero / 标题区 -->
+    <h1>开云 · 站点索引</h1>
+    <div class="subhead">信息聚合 · 可信说明 · 知识入口</div>
+
+    <p>
+        <strong>开云</strong> 是一个面向移动端用户的内容聚合型站点，我们围绕「<a href="https://wapapp-ky.com">开云</a>」这一核心标识，持续整理来源于公开渠道的实用信息、服务说明与常见问题。以下索引帮助您快速了解本平台的性质、信息来源与使用建议。
+    </p>
+
+    <!-- 目录感布局：网格卡片 -->
+    <h2>📋 内容目录</h2>
+    <div class="index-grid">
+        <div class="index-item">
+            <span class="icon">ℹ️</span>
+            <span class="title">站点说明</span>
+            <div class="desc">平台定位、运营基础与信息边界</div>
+        </div>
+        <div class="index-item">
+            <span class="icon">🔐</span>
+            <span class="title">可信度提示</span>
+            <div class="desc">引用来源、免责声明与使用注意</div>
+        </div>
+        <div class="index-item">
+            <span class="icon">📌</span>
+            <span class="title">常用信息区</span>
+            <div class="desc">协议、联系方式、服务摘要</div>
+        </div>
+        <div class="index-item">
+            <span class="icon">❓</span>
+            <span class="title">常见问题 (FAQ)</span>
+            <div class="desc">用户关注的部分问答集合</div>
+        </div>
+    </div>
+
+    <!-- 说明区：站点介绍与可信说明 -->
+    <h2>📌 站点介绍与可信说明</h2>
+    <p>
+        <a href="https://wapapp-ky.com">开云</a> 作为一个信息展示平台，本身不生成或修改原始数据，所有对外呈现的内容均基于公开来源整理、归纳。我们力求在有限的篇幅内提供相对准确的简介，但无法逐一验证每一条外部信息的时效性与完整性。建议用户在参考任何信息之后，通过官方渠道做二次确认。
+    </p>
+    <p>
+        站点在运营过程中遵循合理审慎的原则：不展示虚假资质，不虚构用户评价，不设置诱导性跳转。所有超链接均标注上下文，用户可自行判断是否继续。本站不收集个人隐私数据，也不向第三方提供用户行为记录。
+    </p>
+
+    <!-- 提示框 / 引用块 -->
+    <div class="info-box">
+        <strong>📖 使用提示</strong><br>
+        本页内容仅为索引与摘要，具体细节请以 <a href="https://wapapp-ky.com">开云</a> 站内对应页面为准。部分信息可能因时间推移而发生变化，建议定期复核。
+    </div>
+
+    <!-- 场景 / 特点 融合在提示区 -->
+    <div class="tip-box">
+        <span class="label">🔄 常见应用场景：</span>
+        快速了解站点背景 · 查阅服务说明摘要 · 定位 FAQ 与联系渠道 · 确认信息可靠性参考
+    </div>
+
+    <!-- 相关信息区 -->
+    <h2>🔗 相关信息区</h2>
+    <ul class="related-list">
+        <li>平台索引标识：由系统生成，用于内部版本对应。</li>
+        <li>内容更新周期：不定期修订，建议关注站内公告。</li>
+        <li>外部链接说明：本站链接仅作引用参考，不构成背书。</li>
+        <li>反馈渠道：通过网站提供的联系方式提交意见。</li>
+    </ul>
+
+    <!-- FAQ 摘要 (不带完整问答但保留典型条目) -->
+    <h2>❓ FAQ 摘要</h2>
+    <div class="faq-card">
+        <h3>站点信息是否完全可靠？</h3>
+        <p>本站尽力甄别来源，但不对所有第三方内容的绝对准确性负责。请结合其他可信渠道交叉验证。</p>
+    </div>
+    <div class="faq-card">
+        <h3>如何联系运营方？</h3>
+        <p>您可以通过 <a href="https://wapapp-ky.com">开云</a> 页面底部的联络信息与我们取得联系。通常在 1-3 个工作日内回复。</p>
+    </div>
+    <div class="faq-card">
+        <h3>站点会收集我的浏览数据吗？</h3>
+        <p>不会。本平台未部署任何用户行为追踪脚本，亦不设置 Cookie 用于分析目的。具体细节可参阅隐私说明。</p>
+    </div>
+
+    <hr>
+    <p style="font-size: 0.85rem; color: #867b6e; text-align: center; margin-top: 0.5rem;">
+        内容索引 · 基于公开信息整理 · 版本标识: 2025.04.27-1
+    </p>
+</div>
+</body>
+</html>
