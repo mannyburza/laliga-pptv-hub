@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>开云 · 日常查询与延伸阅读</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Roboto, system-ui, -apple-system, 'Helvetica Neue', sans-serif;
+      background: linear-gradient(145deg, #fae7dd 0%, #fedec8 40%, #fdd6b5 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 2rem 1.2rem;
+      line-height: 1.6;
+      color: #2e241e;
+    }
+
+    .page-card {
+      max-width: 860px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(4px);
+      border-radius: 44px 16px 44px 16px;
+      box-shadow: 0 12px 28px rgba(150, 90, 50, 0.10), 0 4px 12px rgba(0, 0, 0, 0.04);
+      padding: 2.8rem 2.2rem;
+      margin-bottom: 2.5rem;
+      transition: all 0.25s ease;
+    }
+
+    @media (max-width: 500px) {
+      body { padding: 1.2rem 0.8rem; }
+      .page-card { padding: 1.8rem 1.2rem; border-radius: 32px 12px 32px 12px; }
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      font-weight: 460;
+      letter-spacing: 2px;
+      color: #4f372b;
+      margin-bottom: 0.3rem;
+      border-left: 5px solid #c2856b;
+      padding-left: 1.2rem;
+    }
+
+    .subhead {
+      font-size: 1rem;
+      color: #6e5545;
+      margin-bottom: 2rem;
+      padding-left: 1.7rem;
+      opacity: 0.9;
+      font-weight: 360;
+    }
+
+    h2 {
+      font-size: 1.3rem;
+      font-weight: 430;
+      margin: 2rem 0 0.8rem 0;
+      color: #543d30;
+      display: inline-block;
+      border-bottom: 2px solid #e3bbb0;
+      padding-bottom: 0.2rem;
+    }
+
+    p {
+      margin: 0.9rem 0;
+      text-align: justify;
+    }
+
+    .highlight-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: #c27e64;
+      border-radius: 50%;
+      margin-right: 6px;
+      opacity: 0.70;
+    }
+
+    .feature-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem 1.5rem;
+      margin: 1.2rem 0 0.2rem 0;
+    }
+
+    .feature-item {
+      flex: 1 1 180px;
+      background: #fffbf7;
+      padding: 0.65rem 1rem;
+      border-radius: 40px 12px 40px 12px;
+      box-shadow: 0 2px 6px rgba(160, 110, 70, 0.06);
+      border: 1px solid #ece2db;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .scene-card {
+      background: #fbf4ee;
+      margin: 1.2rem 0;
+      padding: 1.2rem 1.5rem;
+      border-radius: 28px 8px 28px 8px;
+      border-left: 4px solid #c99075;
+    }
+
+    .quote-note {
+      background: #fff5ec;
+      padding: 0.5rem 1rem;
+      border-radius: 30px 8px 30px 8px;
+      color: #5c4236;
+      font-style: normal;
+      font-size: 0.95rem;
+      box-shadow: inset 0 1px 4px rgba(0,0,0,0.02);
+      margin: 1.5rem 0 0.5rem 0;
+    }
+
+    a {
+      color: #9b6048;
+      text-decoration: none;
+      font-weight: 470;
+      border-bottom: 1px dotted #c7a391;
+      transition: all 0.2s;
+    }
+
+    a:hover {
+      color: #623e2b;
+      border-bottom: 2px solid #a06b55;
+      background: #f3e3da;
+      padding: 0 0.2rem;
+    }
+
+    .btn-link {
+      display: inline-block;
+      background: #dab6a4;
+      color: #2a1d16;
+      padding: 0.3rem 1.2rem 0.5rem 1.2rem;
+      border-radius: 40px 12px 40px 12px;
+      font-weight: 420;
+      letter-spacing: 0.5px;
+      border: none;
+      box-shadow: 0 2px 8px rgba(140, 80, 50, 0.12);
+      transition: 0.2s;
+      margin: 0 0.2rem;
+      border-bottom: none;
+    }
+
+    .btn-link:hover {
+      background: #cb9f89;
+      transform: scale(1.02);
+      box-shadow: 0 4px 12px rgba(140, 80, 50, 0.18);
+      border-bottom: none;
+    }
+
+    .faq-mini {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid #e3cdc2;
+    }
+
+    .faq-q {
+      font-weight: 500;
+      color: #543d30;
+      margin: 0.7rem 0 0.2rem 0;
+    }
+
+    .footer-note {
+      margin-top: 2.2rem;
+      font-size: 0.9rem;
+      color: #6d574b;
+      text-align: center;
+      opacity: 0.8;
+    }
+
+    .flex-break {
+      height: 0.3rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-card">
+    <h1>开云 · 查询参考</h1>
+    <div class="subhead">日常对照 · 延伸阅读 · 信息整理</div>
+
+    <p>在日常信息接触中，我们常常需要快速查找某个概念、对照多来源的表述，或者顺着一条线索做进一步阅读。<a href="https://wapcn-ky.com" class="btn-link">开云</a> 正是一个适合这类习惯的安静角落——没有弹窗干扰，无需反复登录，页面本身保持一种轻量、克制的姿态，让阅读回归内容本身。</p>
+
+    <h2>📋 内容特点</h2>
+    <div class="feature-grid">
+      <div class="feature-item"><span class="highlight-dot"></span>条目清晰，层次分明</div>
+      <div class="feature-item"><span class="highlight-dot"></span>多用对照与归纳</div>
+      <div class="feature-item"><span class="highlight-dot"></span>链接指向稳定</div>
+      <div class="feature-item"><span class="highlight-dot"></span>无多余交互负担</div>
+    </div>
+    <p>整体结构偏向工具属性，方便你在查询时直接定位段落，也适合在碎片时间里逐条浏览。每个页面都围绕一个核心话题展开，不堆砌无关信息。</p>
+
+    <h2>🔍 适合的使用场景</h2>
+    <div class="scene-card">
+      <p><strong>日常对照查阅</strong> — 比如你想确认某个表述的常见说法、对比不同来源的用词差异，<a href="https://wapcn-ky.com">开云</a> 页面内的内容往往已整理好对应关系，能节省反复跳转的时间。</p>
+      <p><strong>延伸阅读的起点</strong> — 部分段落末尾会放置相关参考，你可以顺着内部链接继续深入，也可以暂时停下，把当前页面当作一个信息锚点。</p>
+      <p><strong>轻量笔记式浏览</strong> — 页面语言偏平实，适合用浏览器自带的阅读模式或稍后读工具收藏，方便日后重新调取。</p>
+    </div>
+
+    <h2>💡 使用建议</h2>
+    <p>如果你是第一次接触，不妨先从首页的摘要部分开始，快速建立整体印象。之后可以根据兴趣点开具体条目——每个条目都相对独立，前后顺序不影响理解。此外，页面中的链接都采用自然嵌入的方式，例如在句子中出现的 <a href="https://wapcn-ky.com">开云</a>，点击后即可跳转至对应的详细页面。建议在阅读时保持浏览器标签页的简洁，这样能更好地体会这种平铺直叙的节奏。</p>
+
+    <div class="quote-note">
+      ⚡ 提醒：页面内容来自公开资料整理与个人笔记，仅供学习交流参考。不构成任何专业建议或决策依据。
+    </div>
+
+    <h2>❓ 常见疑问摘要</h2>
+    <div class="faq-mini">
+      <div class="faq-q">—— 内容多久更新一次？</div>
+      <p>更新没有固定周期，主要根据资料变化或笔记积累进度。部分长期稳定的条目可能数月不变，建议以实际查阅日期为准。</p>
+      <div class="faq-q">—— 可以转载或引用吗？</div>
+      <p>页面内容均为整理性质，引用第三方来源时会尽量标注。若要公开引用，建议先核实原始出处。个人学习场景下随意取用即可。</p>
+      <div class="faq-q">—— 为什么没有搜索框？</div>
+      <p>当前页面以轻量阅读为主，后续可能视情况增加。目前你可以使用浏览器的页面内查找功能（Ctrl+F / Cmd+F）快速定位关键词。</p>
+    </div>
+
+    <div class="footer-note">
+      — 温和查阅，理性对照 —
+    </div>
+  </div>
+</body>
+</html>
